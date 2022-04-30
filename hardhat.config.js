@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 require("dotenv").config();
 require("@nomiclabs/hardhat-ethers");
 require("@nomiclabs/hardhat-etherscan");
@@ -49,13 +50,33 @@ task("balance", "Prints the balance of your account.", async () => {
   const account = privateKeyToAddress(process.env.PRIVATE_KEY);
   const mainnetBalance = await mainnetProvider.getBalance(account);
   const ropstenBalance = await ropstenProvider.getBalance(account);
+  const goerliBalance = await goerliProvider.getBalance(account);
+  const rinkebyBalance = await rinkebyProvider.getBalance(account);
+  const kovanBalance = await kovanProvider.getBalance(account);
+  const bscBalance = await bscProvider.getBalance(account);
+  const bscTestnetBalance = await bscTestnetProvider.getBalance(account);
+  const polygonBalance = await polygonProvider.getBalance(account);
+  const polygonMumbaiBalance = await polygonMumbaiProvider.getBalance(account);
+  const arbitrumOneBalance = await arbitrumOneProvider.getBalance(account);
+  const arbitrumTestnetBalance = await arbitrumTestnetProvider.getBalance(account);
+  const avalancheBalance = await avalancheProvider.getBalance(account);
+  const avalancheFujiTestnetBalance = await avalancheFujiTestnetProvider.getBalance(account);
+  const operaBalance = await operaProvider.getBalance(account);
 
-  console.log(
-    `Mainnet Balance: ${ethers.utils.formatEther(mainnetBalance)} ETH`
-  );
-  console.log(
-    `Ropsten Balance: ${ethers.utils.formatEther(ropstenBalance)} ETH`
-  );
+  console.log(`Mainnet Balance: ${ethers.utils.formatEther(mainnetBalance)} ETH`);
+  console.log(`Ropsten Balance: ${ethers.utils.formatEther(ropstenBalance)} ETH`);
+  console.log(`Goerli Balance: ${ethers.utils.formatEther(goerliBalance)} ETH`);
+  console.log(`Rinkeby Balance: ${ethers.utils.formatEther(rinkebyBalance)} ETH`);
+  console.log(`Kovan Balance: ${ethers.utils.formatEther(kovanBalance)} ETH`);
+  console.log(`BSC Balance: ${ethers.utils.formatEther(bscBalance)} ETH`);
+  console.log(`BSC Testnet Balance: ${ethers.utils.formatEther(bscTestnetBalance)} ETH`);
+  console.log(`Polygon Balance: ${ethers.utils.formatEther(polygonBalance)} ETH`);
+  console.log(`Polygon Mumbai Balance: ${ethers.utils.formatEther(polygonMumbaiBalance)} ETH`);
+  console.log(`Arbitrum One Balance: ${ethers.utils.formatEther(arbitrumOneBalance)} ETH`);
+  console.log(`Arbitrum Testnet Balance: ${ethers.utils.formatEther(arbitrumTestnetBalance)} ETH`);
+  console.log(`Avalanche Balance: ${ethers.utils.formatEther(avalancheBalance)} ETH`);
+  console.log(`Avalanche Fuji Testnet Balance: ${ethers.utils.formatEther(avalancheFujiTestnetBalance)} ETH`);
+  console.log(`Opera Balance: ${ethers.utils.formatEther(operaBalance)} ETH`);
 });
 
 // You need to export an object to set up your config
@@ -75,6 +96,54 @@ module.exports = {
       url: ropstenURL,
       accounts: [process.env.PRIVATE_KEY] || "",
     },
+    goerli: {
+      url: goerliURL,
+      accounts: [process.env.PRIVATE_KEY] || "",
+    },
+    rinkeby: {
+      url: rinkebyURL,
+      accounts: [process.env.PRIVATE_KEY] || "",
+    },
+    kovan: {
+      url: kovanURL,
+      accounts: [process.env.PRIVATE_KEY] || "",
+    },
+    bsc: {
+      url: bscURL,
+      accounts: [process.env.PRIVATE_KEY] || "",
+    },
+    bscTestnet: {
+      url: bscTestnetURL,
+      accounts: [process.env.PRIVATE_KEY] || "",
+    },
+    polygon: {
+      url: polygonURL,
+      accounts: [process.env.PRIVATE_KEY] || "",
+    },
+    polygonMumbai: {
+      url: polygonMumbaiURL,
+      accounts: [process.env.PRIVATE_KEY] || "",
+    },
+    arbitrumOne: {
+      url: arbitrumOneURL,
+      accounts: [process.env.PRIVATE_KEY] || "",
+    },
+    arbitrumTestnet: {
+      url: arbitrumTestnetURL,
+      accounts: [process.env.PRIVATE_KEY] || "",
+    },
+    avalanche: {
+      url: avalancheURL,
+      accounts: [process.env.PRIVATE_KEY] || "",
+    },
+    avalancheFujiTestnet: {
+      url: avalancheFujiTestnetURL,
+      accounts: [process.env.PRIVATE_KEY] || "",
+    },
+    opera: {
+      url: operaURL,
+      accounts: [process.env.PRIVATE_KEY] || "",
+    },
   },
   gasReporter: {
     enabled: process.env.REPORT_GAS !== undefined,
@@ -91,9 +160,6 @@ module.exports = {
       // binance smart chain
       bsc: process.env.BSCSCAN_API_KEY,
       bscTestnet: process.env.BSCSCAN_API_KEY,
-      // huobi eco chain
-      heco: process.env.HECOINFO_API_KEY,
-      hecoTestnet: process.env.HECOINFO_API_KEY,
       // fantom mainnet
       opera: process.env.FTMSCAN_API_KEY,
       ftmTestnet: process.env.FTMSCAN_API_KEY,
@@ -109,13 +175,6 @@ module.exports = {
       // avalanche
       avalanche: process.env.SNOWTRACE_API_KEY,
       avalancheFujiTestnet: process.env.SNOWTRACE_API_KEY,
-      // moonbeam
-      moonbeam: "YOUR_MOONBEAM_MOONSCAN_API_KEY",
-      moonriver: "YOUR_MOONRIVER_MOONSCAN_API_KEY",
-      moonbaseAlpha: "YOUR_MOONBEAM_MOONSCAN_API_KEY",
-      // harmony
-      harmony: "YOUR_HARMONY_API_KEY",
-      harmonyTest: "YOUR_HARMONY_API_KEY",
     },
   },
 };
