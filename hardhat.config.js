@@ -68,15 +68,15 @@ task("balance", "Prints the balance of your account.", async () => {
   console.log(`Goerli Balance: ${ethers.utils.formatEther(goerliBalance)} ETH`);
   console.log(`Rinkeby Balance: ${ethers.utils.formatEther(rinkebyBalance)} ETH`);
   console.log(`Kovan Balance: ${ethers.utils.formatEther(kovanBalance)} ETH`);
-  console.log(`BSC Balance: ${ethers.utils.formatEther(bscBalance)} ETH`);
-  console.log(`BSC Testnet Balance: ${ethers.utils.formatEther(bscTestnetBalance)} ETH`);
-  console.log(`Polygon Balance: ${ethers.utils.formatEther(polygonBalance)} ETH`);
-  console.log(`Polygon Mumbai Balance: ${ethers.utils.formatEther(polygonMumbaiBalance)} ETH`);
+  console.log(`BSC Balance: ${ethers.utils.formatEther(bscBalance)} BNB`);
+  console.log(`BSC Testnet Balance: ${ethers.utils.formatEther(bscTestnetBalance)} BNB`);
+  console.log(`Polygon Balance: ${ethers.utils.formatEther(polygonBalance)} MATIC`);
+  console.log(`Polygon Mumbai Balance: ${ethers.utils.formatEther(polygonMumbaiBalance)} MATIC`);
   console.log(`Arbitrum One Balance: ${ethers.utils.formatEther(arbitrumOneBalance)} ETH`);
   console.log(`Arbitrum Testnet Balance: ${ethers.utils.formatEther(arbitrumTestnetBalance)} ETH`);
-  console.log(`Avalanche Balance: ${ethers.utils.formatEther(avalancheBalance)} ETH`);
-  console.log(`Avalanche Fuji Testnet Balance: ${ethers.utils.formatEther(avalancheFujiTestnetBalance)} ETH`);
-  console.log(`Opera Balance: ${ethers.utils.formatEther(operaBalance)} ETH`);
+  console.log(`Avalanche Balance: ${ethers.utils.formatEther(avalancheBalance)} AVAX`);
+  console.log(`Avalanche Fuji Testnet Balance: ${ethers.utils.formatEther(avalancheFujiTestnetBalance)} AVAX`);
+  console.log(`Opera Balance: ${ethers.utils.formatEther(operaBalance)} FTM`);
 });
 
 // You need to export an object to set up your config
@@ -86,7 +86,15 @@ task("balance", "Prints the balance of your account.", async () => {
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
-  solidity: "0.8.4",
+  solidity: {
+    version: "0.8.4",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 1000,
+      },
+    },
+  },
   networks: {
     mainnet: {
       url: mainnetURL,
